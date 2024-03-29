@@ -14,9 +14,9 @@ void PlayDungeon::playDungeon(const vector<int> &dungeonArray, Monk &myMonk) {
         if (i == 1) {
             EmptyRoom::enter(myMonk);
         }
-        if (i == 2) {
+        if (i == 2)
             MonsterRoom::enter(myMonk);
-        }
+
         if (i == 3) {
             TreasureRoom::enter(myMonk);
         }

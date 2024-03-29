@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #include "EmptyRoom.h"
 #include "Monk.h"
 #include "Pch.h"

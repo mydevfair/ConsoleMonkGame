@@ -9,14 +9,12 @@
 #include "Goblin.h"
 
 
+
 using namespace std;
 
 class MonsterRoom {
 public:
-    static void enter(Monk& myMonk);
-
-private:
-
+    static void enter(Monk &myMonk);
 };
 
 
