@@ -4,19 +4,16 @@
 
 #ifndef CONSOLEMONKGAME_EMPTYROOM_H
 #define CONSOLEMONKGAME_EMPTYROOM_H
-
-#include "EmptyRoom.h"
+#include "Room.h"
 #include "Monk.h"
 #include "Pch.h"
 
 using namespace std;
 
-class EmptyRoom {
+class EmptyRoom : public Room{
 public:
-    static void enter(Monk& myMonk);
-
-    static void action(int emptyRoomChoice, Monk &myMonk);
+    void enter(Monk& myMonk) override;
+private:
+    void action(int emptyRoomChoice, Monk &myMonk);
 };
-
-
 #endif //CONSOLEMONKGAME_EMPTYROOM_H

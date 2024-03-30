@@ -10,58 +10,93 @@ using namespace std;
 
 void IntialiseDungeon::intialiseDungeon(Monk& myMonk) {
     int menuChoice;
-    int emptyRoom = 1;
-    int monsterRoom = 2;
-    int treasureRoom = 3;
-    vector<int> dungeonArray;
+    vector<Room*> dungeonArray;
 
     do {
         string difficultyTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Difficulty.txt)";
         PrintFunction::printTxtFile(difficultyTextImage);
         cout << endl << "Welcome to the dungeon difficulty selection screen: " << endl;
-        cout << endl << "Please select an option: " << endl;
-        cin >> menuChoice;
-        if (menuChoice != 1 && menuChoice != 2 && menuChoice != 3) {
-            cout << "Invalid input,  please enter [1] to start or [0] to exit" << endl;
-            system("pause");
-            system("cls");
+        cout << endl << "Please select an option: " << endl << endl;
+
+        // Get user input with error handling
+        if (!(cin >> menuChoice)) {
+            // Handle failed integer extraction
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input, please enter a number (1, 2, or 3)." << endl;
+        } else {
+            // Check for leftover input *and* reset cin state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard leftover and reset
+            string leftover;
+            getline(cin, leftover); // Check for leftover again (optional)
+            if (!leftover.empty()) {
+                cout << "Invalid input, please enter a single number (1, 2, or 3)." << endl;
+            }
         }
+
     } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
+
     system("cls");
-    if (menuChoice == 1) {
-        random_device rd;
-        default_random_engine rng(rd());
-        for (int i = 0; i < 4; ++i) {
-            uniform_int_distribution<int> dist(1, 2);
-            int roomType = dist(rng);
-            dungeonArray.push_back(roomType);
-        }
-        dungeonArray.push_back(treasureRoom);
-        PlayDungeon::playDungeon(dungeonArray,myMonk);
-    }
-    if (menuChoice == 2) {
-        random_device rd;
-        default_random_engine rng(rd());
-        for (int i = 0; i < 9; ++i) {
-            uniform_int_distribution<int> dist(1, 2);
-            int roomType = dist(rng);
-            dungeonArray.push_back(roomType);
-        }
-        dungeonArray.push_back(treasureRoom);
-        PlayDungeon::playDungeon(dungeonArray, myMonk);
-    }
-    if (menuChoice == 3) {
-        random_device rd;
-        default_random_engine rng(rd());
-        for (int i = 0; i < 14; ++i) {
-            uniform_int_distribution<int> dist(1, 2);
-            int roomType = dist(rng);
-            dungeonArray.push_back(roomType);
-        }
-        dungeonArray.push_back(treasureRoom);
-        PlayDungeon::playDungeon(dungeonArray, myMonk);
-    }
 
+    switch (menuChoice) {
+        case 1: {
+            // Easy difficulty
+            random_device rd;
+            default_random_engine engine(rd());
 
-    //PlayDungeon::playDungeon(dungeonArray, myMonk);
+            for (int i = 0; i < 4; ++i) {
+                uniform_int_distribution<int> dist(1, 2);  // Generate between 1 and 2
+                int roomType = dist(engine);
+                if (roomType == 1) {
+                    dungeonArray.push_back(new EmptyRoom());
+                } else {
+                    dungeonArray.push_back(new MonsterRoom());
+                }
+            }
+            dungeonArray.push_back(new TreasureRoom());
+            PlayDungeon::playDungeon(dungeonArray, myMonk);
+            break;
+        }
+        case 2: {
+            // Medium difficulty
+            random_device rd;
+            default_random_engine engine(rd());
+
+            for (int i = 0; i < 9; ++i) {
+                uniform_int_distribution<int> dist(1, 2);  // Generate between 1 and 2
+                int roomType = dist(engine);
+                if (roomType == 1) {
+                    dungeonArray.push_back(new EmptyRoom());
+                } else {
+                    dungeonArray.push_back(new MonsterRoom());
+                }
+            }
+            dungeonArray.push_back(new TreasureRoom());
+            PlayDungeon::playDungeon(dungeonArray, myMonk);
+            break;
+        }
+        case 3: {
+            // Hard difficulty
+            random_device rd;
+            default_random_engine engine(rd());
+
+            for (int i = 0; i < 14; ++i) {
+                uniform_int_distribution<int> dist(1, 2);  // Generate between 1 and 2
+                int roomType = dist(engine);
+                if (roomType == 1) {
+                    dungeonArray.push_back(new EmptyRoom());
+                } else {
+                    dungeonArray.push_back(new MonsterRoom());
+                }
+            }
+            dungeonArray.push_back(new TreasureRoom());
+            PlayDungeon::playDungeon(dungeonArray, myMonk);
+            break;
+        }
+        default: {
+            // Handle unexpected menuChoice (shouldn't happen here, but good practice)
+            cout << "An unexpected error occurred. Please restart the program." << endl;
+            break;
+        }
+    }
 }

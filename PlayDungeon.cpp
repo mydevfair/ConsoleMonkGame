@@ -9,16 +9,10 @@
 
 using namespace std;
 
-void PlayDungeon::playDungeon(const vector<int> &dungeonArray, Monk &myMonk) {
-    for (int i: dungeonArray) {
-        if (i == 1) {
-            EmptyRoom::enter(myMonk);
-        }
-        if (i == 2)
-            MonsterRoom::enter(myMonk);
-
-        if (i == 3) {
-            TreasureRoom::enter(myMonk);
-        }
+void PlayDungeon::playDungeon(const vector<Room*> &dungeonArray, Monk &myMonk) {
+    for (Room* room : dungeonArray) {
+        room->enter(myMonk);
+        delete room;
     }
+
 }

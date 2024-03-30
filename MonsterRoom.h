@@ -7,14 +7,13 @@
 #include "Pch.h"
 #include "Monk.h"
 #include "Goblin.h"
-
-
+#include "Room.h"
 
 using namespace std;
 
-class MonsterRoom {
+class MonsterRoom : public Room{
 public:
-    static void enter(Monk &myMonk);
+    void enter(Monk &myMonk) override;
 };
 
 

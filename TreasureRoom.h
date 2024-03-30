@@ -6,13 +6,14 @@
 #define CONSOLEMONKGAME_TREASUREROOM_H
 #include "Monk.h"
 #include "Pch.h"
+#include "Room.h"
 
 
 using namespace std;
 
-class TreasureRoom {
+class TreasureRoom : public Room {
 public:
-    static void enter(Monk &myMonk);
+    void enter(Monk &myMonk) override;
 };
 
 

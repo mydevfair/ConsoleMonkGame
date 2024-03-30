@@ -16,4 +16,6 @@ add_executable(ConsoleMonkGame main.cpp
         MainMenu.cpp
         PrintFunction.cpp
         Ghost.cpp
+        Room.cpp
+        Action.cpp
         )

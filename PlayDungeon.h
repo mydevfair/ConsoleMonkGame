@@ -10,12 +10,13 @@
 #include "MonsterRoom.h"
 #include "TreasureRoom.h"
 #include "Monk.h"
+#include "Room.h"
 
 using namespace std;
 
 class PlayDungeon {
 public:
-    static void playDungeon(const vector<int> &dungeonArray, Monk &myMonk);
+    static void playDungeon(const vector<Room*> &dungeonArray, Monk &myMonk);
 };
 
 

@@ -16,7 +16,7 @@ public:
 
     int takeDamage(int damage);
 
-    static void GhostFight(Monk &myMonk);
+    [[noreturn]] static void GhostFight(Monk &myMonk);
 private:
     string ghostName = "Ghost";
 
