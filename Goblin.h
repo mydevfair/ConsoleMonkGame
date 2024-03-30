@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #ifndef CONSOLEMONKGAME_GOBLIN_H
 #define CONSOLEMONKGAME_GOBLIN_H
 #include "Pch.h"
@@ -22,6 +21,4 @@ private:
     string goblinName = "Goblin";
 
 };
-
-
 #endif //CONSOLEMONKGAME_GOBLIN_H

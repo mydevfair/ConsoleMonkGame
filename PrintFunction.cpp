@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #include "PrintFunction.h"
 
 void PrintFunction::printTxtFile(const string &file) {

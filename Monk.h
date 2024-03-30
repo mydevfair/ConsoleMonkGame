@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #ifndef CONSOLEMONKGAME_MONK_H
 #define CONSOLEMONKGAME_MONK_H
 #include "Pch.h"
@@ -29,6 +28,4 @@ private:
     string monkName;
 
 };
-
-
 #endif //CONSOLEMONKGAME_MONK_H

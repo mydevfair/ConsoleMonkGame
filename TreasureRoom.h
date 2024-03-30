@@ -8,13 +8,11 @@
 #include "Pch.h"
 #include "Room.h"
 
-
 using namespace std;
 
 class TreasureRoom : public Room {
 public:
     void enter(Monk &myMonk) override;
 };
-
 
 #endif //CONSOLEMONKGAME_TREASUREROOM_H

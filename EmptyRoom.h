@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #ifndef CONSOLEMONKGAME_EMPTYROOM_H
 #define CONSOLEMONKGAME_EMPTYROOM_H
 #include "Room.h"

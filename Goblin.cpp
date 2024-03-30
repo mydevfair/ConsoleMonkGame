@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #include "Goblin.h"
 #include "Pch.h"
 #include "PrintFunction.h"
@@ -44,7 +43,8 @@ void Goblin::GoblinFight(Monk &myMonk) {
             PrintFunction::printTxtFile(monsterRoomTextPath);
             cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
                  << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl;
-            cout << endl << "| Monster: " << myGoblin.getGoblinName() << " | HealthPoints: " << myGoblin.getHealthPoints()
+            cout << endl << "| Monster: " << myGoblin.getGoblinName() << " | HealthPoints: "
+                 << myGoblin.getHealthPoints()
                  << " | AttackPoints: " << myGoblin.getAttackPoints() << " |" << endl << endl;
 
             cout << "Do you want to fight (1) or defend (2)? ";
@@ -72,7 +72,7 @@ void Goblin::GoblinFight(Monk &myMonk) {
                 cout << "Monk recovers 1 Health Point." << endl;
                 system("pause");
                 system("cls");
-            } else if (cin.fail()){
+            } else if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << endl << "Invalid choice. Please enter 1 or 2." << endl << endl;

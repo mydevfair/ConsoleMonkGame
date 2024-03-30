@@ -8,9 +8,9 @@
 
 using namespace std;
 
-void IntialiseDungeon::intialiseDungeon(Monk& myMonk) {
+void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
     int menuChoice;
-    vector<Room*> dungeonArray;
+    vector<Room *> dungeonArray;
 
     do {
         string difficultyTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Difficulty.txt)";

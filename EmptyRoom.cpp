@@ -6,7 +6,6 @@
 #include "Pch.h"
 #include "PrintFunction.h"
 
-
 using namespace std;
 
 string emptyRoomTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\EmptyRoom.txt)";
@@ -28,7 +27,7 @@ void EmptyRoom::enter(Monk &myMonk) {
                 throw runtime_error("Invalid choice. Please enter 1 or 2.");
             }
             break; // Valid input received, exit the loop
-        } catch (const runtime_error& e) {
+        } catch (const runtime_error &e) {
             cout << "Error: " << e.what() << endl << endl;
             cin.clear();  // Clear error flags
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

@@ -12,6 +12,4 @@ class PrintFunction {
 public:
     static void printTxtFile(const string &file);
 };
-
-
 #endif //CONSOLEMONKGAME_PRINTFUNCTION_H

@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #ifndef CONSOLEMONKGAME_PLAYDUNGEON_H
 #define CONSOLEMONKGAME_PLAYDUNGEON_H
 #include "Pch.h"
@@ -18,6 +17,4 @@ class PlayDungeon {
 public:
     static void playDungeon(const vector<Room*> &dungeonArray, Monk &myMonk);
 };
-
-
 #endif //CONSOLEMONKGAME_PLAYDUNGEON_H

@@ -17,8 +17,6 @@ bool Action::isSuccessful() {
 }
 
 int Action::getRandomInt() {
-        srand(static_cast<unsigned int>(time(nullptr))); // Uncomment if needed
-        return rand() % 2 + 1;
-    }
-
-
+    srand(static_cast<unsigned int>(time(nullptr))); // Uncomment if needed
+    return rand() % 2 + 1;
+}

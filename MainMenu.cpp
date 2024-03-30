@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 void MainMenu::MainMenuChoice() {
     int menuChoice;
     string menuTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Intro.txt)";
@@ -60,5 +59,3 @@ void MainMenu::MainMenuChoice() {
         system("pause");
     }
 }
-
-

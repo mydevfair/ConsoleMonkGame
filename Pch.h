@@ -1,7 +1,6 @@
 //
 // Created by cfair on 29/03/2024.
 //
-
 #ifndef CONSOLEMONKGAME_PCH_H
 #define CONSOLEMONKGAME_PCH_H
 
@@ -14,6 +13,5 @@
 #include <random>
 #include <cstdlib>
 #include <memory>
-
 
 #endif //CONSOLEMONKGAME_PCH_H

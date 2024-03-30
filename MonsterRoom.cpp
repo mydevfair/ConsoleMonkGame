@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 void MonsterRoom::enter(Monk &myMonk) {
 
     int randomMonsterChoice = Action::getRandomInt();
