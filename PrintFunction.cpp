@@ -3,6 +3,7 @@
 //
 #include "PrintFunction.h"
 
+// Function to print a text file
 void PrintFunction::printTxtFile(const string &file) {
     string line;
     ifstream inFile;

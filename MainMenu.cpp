@@ -8,14 +8,17 @@
 
 using namespace std;
 
+// Function to display the main menu and handle user input
 void MainMenu::MainMenuChoice() {
     int menuChoice;
     string menuTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Intro.txt)";
+    // Display the main menu
     do {
         PrintFunction::printTxtFile(menuTextImage);
         cout << "Welcome Player! Please press [1] to start game or [0] to exit" << endl << endl;
         cin >> menuChoice;
         cout << endl;
+        // Error handling for invalid input
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -37,6 +40,8 @@ void MainMenu::MainMenuChoice() {
         cout << "Goodbye" << endl;
         exit(0);
     }
+    // If the user selects to start the game
+    else
     if (menuChoice == 1) {
         system("cls");
         Monk *myMonk = Monk::getMonkInstance();
@@ -55,6 +60,7 @@ void MainMenu::MainMenuChoice() {
         cout << "Monk Description: " << myMonk->getMonkDescription() << "!" << endl << endl;
         system("pause");
         system("cls");
+        // Intialise the dungeon
         IntialiseDungeon::intialiseDungeon(*myMonk);
         system("pause");
     }

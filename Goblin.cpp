@@ -9,28 +9,20 @@
 #include "Action.h"
 
 using namespace std;
-
+// Constructor for the Goblin class
 Goblin::Goblin()
         : Player("", 10, 2) {
 }
-
+// Getter for the Goblin's name
 string Goblin::getGoblinName() const {
     return goblinName;
 }
-
+// Setter for the Goblin's Health Points
 int Goblin::takeDamage(int damage) {
     return healthPoints = healthPoints - damage;
 }
 
-extern bool isActionSuccessful() {
-    static bool seeded = false;
-    if (!seeded) {
-        srand(static_cast<unsigned int>(time(nullptr)));
-        seeded = true;
-    }
-    return rand() % 2 == 0;
-}
-
+// Function to initiate the fight between the Monk and the Goblin
 void Goblin::GoblinFight(Monk &myMonk) {
     const string monsterRoomTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/MonsterRoom.txt";
     const string deathTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/YouDied.txt";
@@ -39,6 +31,7 @@ void Goblin::GoblinFight(Monk &myMonk) {
 
     while (true) {
         system("cls");
+        // Monk's turn
         do {
             PrintFunction::printTxtFile(monsterRoomTextPath);
             cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
@@ -72,7 +65,9 @@ void Goblin::GoblinFight(Monk &myMonk) {
                 cout << "Monk recovers 1 Health Point." << endl;
                 system("pause");
                 system("cls");
-            } else if (cin.fail()) {
+            }
+            // Error handling for invalid input
+            else if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << endl << "Invalid choice. Please enter 1 or 2." << endl << endl;
@@ -103,6 +98,7 @@ void Goblin::GoblinFight(Monk &myMonk) {
                 string deathTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\YouDied.txt)";
                 system("pause");
                 system("cls");
+                // Restores Monk's health points for next game
                 myMonk.restoreMonkHealthPoints();
                 MainMenu::MainMenuChoice();
             }

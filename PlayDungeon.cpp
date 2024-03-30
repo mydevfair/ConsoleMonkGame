@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Function to play the dungeon
 void PlayDungeon::playDungeon(const vector<Room *> &dungeonArray, Monk &myMonk) {
     for (Room *room: dungeonArray) {
         room->enter(myMonk);

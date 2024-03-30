@@ -4,6 +4,7 @@
 #include "Pch.h"
 #include "Action.h"
 
+// Randomly determine if an action is successful
 bool Action::isSuccessful() {
     static bool seeded = false;
     if (!seeded) {
@@ -15,7 +16,7 @@ bool Action::isSuccessful() {
 
     return randomNumber % 2 == 0;
 }
-
+// Get a random integer between 1 and 2
 int Action::getRandomInt() {
     srand(static_cast<unsigned int>(time(nullptr))); // Uncomment if needed
     return rand() % 2 + 1;

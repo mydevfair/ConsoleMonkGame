@@ -10,13 +10,13 @@
 #include "Action.h"
 
 using namespace std;
-
+// Function to enter the monster room
 void MonsterRoom::enter(Monk &myMonk) {
-
+    // Randomly select a monster to fight
     int randomMonsterChoice = Action::getRandomInt();
     string monsterRoomTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\MonsterRoom.txt)";
 
-
+    // Switch statement to handle the random monster choice
     if (randomMonsterChoice == 1) {
         PrintFunction::printTxtFile(monsterRoomTextImage);
         cout << endl << "You have entered a monster room with a goblin in" << endl;

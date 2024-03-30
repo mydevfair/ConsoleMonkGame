@@ -7,24 +7,25 @@
 #include "Action.h"
 
 using namespace std;
-
+// Ghost constructor
 Ghost::Ghost()
         : Player("", 13, 3) {
 }
-
+// Ghost Getters
 string Ghost::getGhostName() const {
     return ghostName;
 }
-
+// Ghost Setters
 int Ghost::takeDamage(int damage) {
     return healthPoints = healthPoints - damage;
 }
+// GhostFight function
 void Ghost::GhostFight(Monk &myMonk) {
     const string monsterRoomTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/MonsterRoom.txt";
     const string deathTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/YouDied.txt";
     Ghost myGhost = Ghost();
     int fightOrDefend;
-
+    // Fight loop
     while (true) {
         system("cls");
         do {

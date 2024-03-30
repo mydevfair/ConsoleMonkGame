@@ -8,10 +8,11 @@
 
 using namespace std;
 
+// Function to intialise the dungeon based on the difficulty selected by the user
 void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
     int menuChoice;
     vector<Room *> dungeonArray;
-
+    // Display the difficulty selection screen
     do {
         string difficultyTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Difficulty.txt)";
         PrintFunction::printTxtFile(difficultyTextImage);
@@ -37,7 +38,7 @@ void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
     } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
 
     system("cls");
-
+    // Switch statement to handle the user's choice
     switch (menuChoice) {
         case 1: {
             // Easy difficulty
@@ -93,6 +94,7 @@ void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
             PlayDungeon::playDungeon(dungeonArray, myMonk);
             break;
         }
+        // Handle unexpected menuChoice (shouldn't happen here, but good practice)
         default: {
             // Handle unexpected menuChoice (shouldn't happen here, but good practice)
             cout << "An unexpected error occurred. Please restart the program." << endl;
