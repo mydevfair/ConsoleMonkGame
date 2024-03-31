@@ -21,10 +21,13 @@ public:
 
     int getAttackPoints() const { return attackPoints; }
 
+    void takeDamage(int i);
+
 private:
     string playerName{};
 protected:
     int healthPoints{};
     int attackPoints{};
+
 };
 #endif //CONSOLEMONKGAME_PLAYER_H

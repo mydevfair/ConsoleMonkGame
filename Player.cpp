@@ -8,3 +8,7 @@ Player::Player(string playerName, int healthPoints, int attackPoints)
 : playerName(std::move(playerName)), healthPoints(healthPoints), attackPoints(attackPoints){
 
 }
+
+void Player::takeDamage(int i) {
+    healthPoints -= i  ;
+}
