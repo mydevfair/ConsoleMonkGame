@@ -65,7 +65,6 @@ void EmptyRoom::action(int emptyRoomChoice, Monk &myMonk) {
     if (emptyRoomChoice == 2) {
         system("cls");
         PrintFunction::printTxtFile(emptyRoomTextImage);
-        myMonk.restoreMonkHealthPoints();
         cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
              << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl << endl;
         cout << "You Have Chosen To Continue" << endl << endl;
