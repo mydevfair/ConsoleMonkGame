@@ -50,7 +50,7 @@ void Goblin::GoblinFight(Monk &myMonk) {
                     system("cls");
                     if (myGoblin.getHealthPoints() <= 0) {
                         PrintFunction::printTxtFile(monsterRoomTextPath);
-                        cout << "Monk defeats the Ghost!" << endl;
+                        cout << endl << "Monk defeats the Goblin!" << endl;
                         system("pause");
                         system("cls");
                         break;
@@ -88,7 +88,7 @@ void Goblin::GoblinFight(Monk &myMonk) {
              << " | AttackPoints: " << myGoblin.getAttackPoints() << " |" << std::endl << endl;
         if (Action::isSuccessful()) {
             myMonk.modifyMonkHealth(myMonk.getHealthPoints() - myGoblin.getAttackPoints());
-            cout << "Goblin attacks for " << myGoblin.getAttackPoints() << " points!" << endl;
+            cout << endl << "Goblin attacks for " << myGoblin.getAttackPoints() << " points!" << endl;
             system("pause");
             system("cls");
             if (myMonk.getHealthPoints() <= 0) {
