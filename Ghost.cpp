@@ -7,29 +7,34 @@
 #include "Action.h"
 
 using namespace std;
+
 // Ghost constructor
 Ghost::Ghost()
         : Player("", 13, 3) {
 }
+
 // Ghost Getters
 string Ghost::getGhostName() const {
     return ghostName;
 }
+
 // Ghost Setters
 int Ghost::takeDamage(int damage) {
     return healthPoints = healthPoints - damage;
 }
+
 // GhostFight function
 void Ghost::GhostFight(Monk &myMonk) {
-    const string monsterRoomTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/MonsterRoom.txt";
-    const string deathTextPath = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/YouDied.txt";
+    const string monsterRoomTextImage = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/MonsterRoom.txt";
+    const string deathTextImage = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/YouDied.txt";
     Ghost myGhost = Ghost();
     int fightOrDefend;
+    bool isFightOver = false;
     // Fight loop
-    while (true) {
+    while (!isFightOver) {
         system("cls");
         do {
-            PrintFunction::printTxtFile(monsterRoomTextPath);
+            PrintFunction::printTxtFile(monsterRoomTextImage);
             cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
                  << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl;
             cout << endl << "| Monster: " << myGhost.getGhostName() << " | HealthPoints: " << myGhost.getHealthPoints()
@@ -44,11 +49,11 @@ void Ghost::GhostFight(Monk &myMonk) {
                     system("pause");
                     system("cls");
                     if (myGhost.getHealthPoints() <= 0) {
-                        PrintFunction::printTxtFile(monsterRoomTextPath);
-                        cout << "Monk defeats the Ghost!" << endl;
+                        PrintFunction::printTxtFile(monsterRoomTextImage);
+                        cout << endl << "Monk defeats the Ghost!" << endl << endl;
                         system("pause");
                         system("cls");
-                        break;
+                        isFightOver = true;
                     }
                 } else {
                     cout << "Monk's attack missed!" << endl;
@@ -60,7 +65,7 @@ void Ghost::GhostFight(Monk &myMonk) {
                 cout << "Monk recovers 1 Health Point." << endl;
                 system("pause");
                 system("cls");
-            } else if (cin.fail()){
+            } else if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << endl << "Invalid choice. Please enter 1 or 2." << endl << endl;
@@ -74,30 +79,34 @@ void Ghost::GhostFight(Monk &myMonk) {
         } while (fightOrDefend != 1 && fightOrDefend != 2 && !cin.fail());
 
         // Monster's turn
-        PrintFunction::printTxtFile(monsterRoomTextPath);
-        cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
-             << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl;
-        cout << endl << "| Monster: " << myGhost.getGhostName() << " | HealthPoints: " << myGhost.getHealthPoints()
-             << " | AttackPoints: " << myGhost.getAttackPoints() << " |" << std::endl << endl;
-        if (Action::isSuccessful()) {
-            myMonk.modifyMonkHealth(myMonk.getHealthPoints() - myGhost.getAttackPoints());
-            cout << "Ghost attacks for " << myGhost.getAttackPoints() << " points!" << endl;
-            system("pause");
-            system("cls");
-            if (myMonk.getHealthPoints() <= 0) {
-                PrintFunction::printTxtFile(monsterRoomTextPath);
-                cout << "The Ghost defeats the Monk!" << endl;
-                system("pause");
-                string deathTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\YouDied.txt)";
+        if (!isFightOver) {
+            PrintFunction::printTxtFile(monsterRoomTextImage);
+            cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
+                 << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl;
+            cout << endl << "| Monster: " << myGhost.getGhostName() << " | HealthPoints: " << myGhost.getHealthPoints()
+                 << " | AttackPoints: " << myGhost.getAttackPoints() << " |" << std::endl << endl;
+            if (Action::isSuccessful()) {
+                myMonk.modifyMonkHealth(myMonk.getHealthPoints() - myGhost.getAttackPoints());
+                cout << "Ghost attacks for " << myGhost.getAttackPoints() << " points!" << endl;
                 system("pause");
                 system("cls");
-                myMonk.restoreMonkHealthPoints();
-                MainMenu::MainMenuChoice();
+                if (myMonk.getHealthPoints() <= 0) {
+                    PrintFunction::printTxtFile(monsterRoomTextImage);
+                    cout << "The Ghost defeats the Monk!" << endl << endl;
+                    system("pause");
+                    system("cls");
+                    PrintFunction::printTxtFile(deathTextImage);
+                    system("pause");
+                    system("cls");
+                    // Restores Monk's health points and returns to main menu
+                    myMonk.restoreMonkHealthPoints();
+                    MainMenu::MainMenuChoice();
+                }
+            } else {
+                cout << "Ghost's attack missed!" << endl;
+                system("pause");
+                system("cls");
             }
-        } else {
-            cout << "Ghost's attack missed!" << endl;
-            system("pause");
-            system("cls");
         }
     }
 }

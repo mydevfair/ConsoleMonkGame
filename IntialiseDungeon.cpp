@@ -14,28 +14,23 @@ void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
     vector<Room *> dungeonArray;
     // Display the difficulty selection screen
     do {
+        cin.clear();
         string difficultyTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\Difficulty.txt)";
         PrintFunction::printTxtFile(difficultyTextImage);
         cout << endl << "Welcome to the dungeon difficulty selection screen: " << endl;
         cout << endl << "Please select an option: " << endl << endl;
-
-        // Get user input with error handling
-        if (!(cin >> menuChoice)) {
-            // Handle failed integer extraction
+        if (!(cin >> menuChoice)) {  // Check if input is a valid number
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid input, please enter a number (1, 2, or 3)." << endl;
+        } else if (menuChoice < 1 || menuChoice > 3) {  // Check if number is within valid range
+            cout << "Invalid choice. Please enter 1, 2, or 3." << endl;
         } else {
-            // Check for leftover input *and* reset cin state
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard leftover and reset
-            string leftover;
-            getline(cin, leftover); // Check for leftover again (optional)
-            if (!leftover.empty()) {
-                cout << "Invalid input, please enter a single number (1, 2, or 3)." << endl;
-            }
+            break;  // Valid input received, exit the loop
         }
-
-    } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
+        system("pause");
+        system("cls");
+    } while (true);  // Loop until valid input is obtained
 
     system("cls");
     // Switch statement to handle the user's choice
@@ -94,9 +89,8 @@ void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
             PlayDungeon::playDungeon(dungeonArray, myMonk);
             break;
         }
-        // Handle unexpected menuChoice (shouldn't happen here, but good practice)
         default: {
-            // Handle unexpected menuChoice (shouldn't happen here, but good practice)
+            // Handle unexpected menuChoice
             cout << "An unexpected error occurred. Please restart the program." << endl;
             break;
         }
