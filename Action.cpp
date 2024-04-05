@@ -16,8 +16,8 @@ bool Action::isSuccessful() {
 
     return randomNumber % 2 == 0;
 }
-// Get a random integer between 1 and 2
+// Get a random integer between 1 and 3
 int Action::getRandomInt() {
     srand(static_cast<unsigned int>(time(nullptr))); // Uncomment if needed
-    return rand() % 2 + 1;
+    return rand() % 3 + 1;
 }

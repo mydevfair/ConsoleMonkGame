@@ -12,15 +12,5 @@ using namespace std;
 class Ghost : public Player {
 public:
     Ghost();
-
-    string getGhostName() const;
-
-    int takeDamage(int damage);
-
-    [[noreturn]] static void GhostFight(Monk &myMonk);
-
-private:
-    string ghostName = "Ghost";
-
 };
 #endif //CONSOLEMONKGAME_GHOST_H

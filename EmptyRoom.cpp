@@ -55,7 +55,14 @@ void EmptyRoom::action(int emptyRoomChoice, Monk &myMonk) {
     if (emptyRoomChoice == 1) {
         system("cls");
         PrintFunction::printTxtFile(emptyRoomTextImage);
-        myMonk.restoreMonkHealthPoints();
+        if (myMonk.getHealthPoints()>=15){
+            cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
+                 << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl << endl;
+            cout << "Monk: " << myMonk.getMonkName() << " HealthPoints Already Full" << endl << endl;
+            system("pause");
+            return;
+        }else{
+        myMonk.restoreMonkHealthPoints();}
         cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
              << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl << endl;
         cout << "Monk: " << myMonk.getMonkName() << " HealthPoints Restored" << endl << endl;

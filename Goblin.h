@@ -12,13 +12,5 @@ using namespace std;
 class Goblin : public Player{
 public:
     Goblin();
-    string getGoblinName() const;
-
-    int takeDamage(int damage);
-
-    static void GoblinFight(Monk &myMonk);
-private:
-    string goblinName = "Goblin";
-
 };
 #endif //CONSOLEMONKGAME_GOBLIN_H
