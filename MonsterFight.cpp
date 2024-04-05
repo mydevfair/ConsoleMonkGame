@@ -28,6 +28,7 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
             cout << "Your turn!" << endl;
             cout << "Do you want to fight (1) or defend (2)? ";
             cin >> fightOrDefend;
+            cout << endl;
             if (fightOrDefend == 1) {
                 if (Action::isSuccessful()) {
                     player.takeDamage(myMonk.getAttackPoints());
@@ -47,10 +48,16 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
                     system("cls");
                 }
             } else if (fightOrDefend == 2) {
+                if(myMonk.getHealthPoints() < 15){
                 myMonk.modifyMonkHealth(min(myMonk.getHealthPoints() + 1, 15)); // Ensures HP doesn't exceed max
                 cout << "Monk recovers 1 Health Point." << endl;
                 system("pause");
-                system("cls");
+                system("cls");}
+                else{
+                    cout << "Monk is already at full health!" << endl;
+                    system("pause");
+                    system("cls");
+                }
             }
                 // Error handling for invalid input
             else if (cin.fail()) {

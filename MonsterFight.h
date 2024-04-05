@@ -12,7 +12,6 @@
 class MonsterFight {
 
 public:
-
     static void monsterFight(Monk &myMonk, Player &player);
 };
 

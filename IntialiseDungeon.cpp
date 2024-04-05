@@ -26,6 +26,8 @@ void IntialiseDungeon::intialiseDungeon(Monk &myMonk) {
         } else if (menuChoice < 1 || menuChoice > 3) {  // Check if number is within valid range
             cout << "Invalid choice. Please enter 1, 2, or 3." << endl;
         } else {
+            cout << "You have selected difficulty: " << menuChoice << endl;
+            system("pause");
             break;  // Valid input received, exit the loop
         }
         system("pause");

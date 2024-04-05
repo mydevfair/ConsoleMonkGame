@@ -19,18 +19,17 @@ void MonsterRoom::enter(Monk &myMonk) {
     // Randomly select a monster to fight
     int randomMonsterChoice = Action::getRandomInt();
     string monsterRoomTextImage = R"(C:\Users\cfair\CLionProjects\ConsoleMonkGame\Text_Files\MonsterRoom.txt)";
-    const vector<Player *> monsterArray = {new Goblin(), new Ghost(), new Spider()};
 
     Player *selectedMonster;
     // Switch statement to handle the random monster choice
     if (randomMonsterChoice == 1) {
-        selectedMonster = monsterArray[0];
+        selectedMonster = new Goblin();
     }
     if (randomMonsterChoice == 2) {
-        selectedMonster = monsterArray[1];
+        selectedMonster = new Ghost();
     }
     if (randomMonsterChoice == 3) {
-        selectedMonster = monsterArray[2];
+        selectedMonster = new Spider();
     }
 
     MonsterFight::monsterFight(myMonk, *selectedMonster);

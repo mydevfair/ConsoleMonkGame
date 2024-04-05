@@ -2,6 +2,8 @@
 // Created by cfair on 29/03/2024.
 //
 #include "Monk.h"
+
+#include <utility>
 #include "Pch.h"
 
 using namespace std;
@@ -10,7 +12,7 @@ using namespace std;
 static Monk* monkInstance = nullptr;
 // Constructor for the Monk class
 Monk::Monk(const string& monkName, string description)
-    : Player(monkName, 15, 3), monkName(monkName), description(description)
+    : Player(monkName, 15, 3), monkName(monkName), description(std::move(description))
 {
 
 }
