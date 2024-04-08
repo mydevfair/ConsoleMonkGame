@@ -4,6 +4,7 @@
 #include "PlayDungeon.h"
 #include "Monk.h"
 #include "EmptyRoom.h"
+#include "DungeonDelete.h"
 
 using namespace std;
 
@@ -11,6 +12,6 @@ using namespace std;
 void PlayDungeon::playDungeon(const vector<Room *> &dungeonArray, Monk &myMonk) {
     for (Room *room: dungeonArray) {
         room->enter(myMonk);
-        delete room;
+        DungeonDelete::deleteDungeon(room);
     }
 }

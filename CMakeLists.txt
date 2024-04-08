@@ -20,4 +20,5 @@ add_executable(ConsoleMonkGame main.cpp
         Action.cpp
         MonsterFight.cpp
         Spider.cpp
+        DungeonDelete.cpp
         )

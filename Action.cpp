@@ -18,6 +18,6 @@ bool Action::isSuccessful() {
 }
 // Get a random integer between 1 and 3
 int Action::getRandomInt() {
-    srand(static_cast<unsigned int>(time(nullptr))); // Uncomment if needed
+    srand(static_cast<unsigned int>(time(nullptr)));
     return rand() % 3 + 1;
 }

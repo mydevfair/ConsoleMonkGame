@@ -19,6 +19,8 @@ public:
 
     int getHealthPoints() const { return healthPoints; }
 
+    int setHealthPoints(int i) { return healthPoints = i; }
+
     int getAttackPoints() const { return attackPoints; }
 
     void takeDamage(int i);

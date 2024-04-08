@@ -14,6 +14,7 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
     const string deathTextImage = "C:/Users/cfair/CLionProjects/ConsoleMonkGame/Text_Files/YouDied.txt";
     int fightOrDefend;
     bool isFightOver = false;
+    bool monsterAttackOrDefend = false;
 
     while (!isFightOver) {
         system("cls");
@@ -30,6 +31,7 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
             cin >> fightOrDefend;
             cout << endl;
             if (fightOrDefend == 1) {
+                cout << "Monk attacks!" << endl;
                 if (Action::isSuccessful()) {
                     player.takeDamage(myMonk.getAttackPoints());
                     cout << "Monk attacks for " << myMonk.getAttackPoints() << " points!" << endl;
@@ -48,12 +50,13 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
                     system("cls");
                 }
             } else if (fightOrDefend == 2) {
-                if(myMonk.getHealthPoints() < 15){
-                myMonk.modifyMonkHealth(min(myMonk.getHealthPoints() + 1, 15)); // Ensures HP doesn't exceed max
-                cout << "Monk recovers 1 Health Point." << endl;
-                system("pause");
-                system("cls");}
-                else{
+                cout << "Monk prays for healing." << endl;
+                if (myMonk.getHealthPoints() < 15) {
+                    myMonk.modifyMonkHealth(min(myMonk.getHealthPoints() + 1, 15)); // Ensures HP doesn't exceed max
+                    cout << "Monk recovers 1 Health Point." << endl;
+                    system("pause");
+                    system("cls");
+                } else {
                     cout << "Monk is already at full health!" << endl;
                     system("pause");
                     system("cls");
@@ -82,9 +85,13 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
                  << player.getHealthPoints()
                  << " | AttackPoints: " << player.getAttackPoints() << " |" << std::endl << endl;
             cout << "Monster's turn!" << endl;
-            if (Action::isSuccessful()) {
+
+            monsterAttackOrDefend = Action::isSuccessful();
+
+            if (monsterAttackOrDefend) {
                 myMonk.modifyMonkHealth(myMonk.getHealthPoints() - player.getAttackPoints());
-                cout << endl << player.getName() << " attacks for " << player.getAttackPoints() << " points!" << endl;
+                cout << endl << player.getName() << " attacks for " << player.getAttackPoints() << " points!"
+                     << endl;
                 system("pause");
                 system("cls");
                 if (myMonk.getHealthPoints() <= 0) {
@@ -98,9 +105,23 @@ void MonsterFight::monsterFight(Monk &myMonk, Player& player) {
                     // Restores Monk's health points for next game
                     myMonk.restoreMonkHealthPoints();
                     MainMenu::MainMenuChoice();
+                } else {
+                    PrintFunction::printTxtFile(monsterRoomTextPath);
+                    cout << endl << "| Monk: " << myMonk.getMonkName() << " | HealthPoints: " << myMonk.getHealthPoints()
+                         << " | AttackPoints: " << myMonk.getAttackPoints() << " |" << endl;
+                    cout << endl << "| Monster: " << player.getName() << " | HealthPoints: "
+                         << player.getHealthPoints()
+                         << " | AttackPoints: " << player.getAttackPoints() << " |" << std::endl << endl;
+                    cout << "Monster's turn!" << endl;
+                    cout << player.getName() << " attack missed!" << endl;
+                    system("pause");
+                    system("cls");
                 }
-            } else {
-                cout << player.getName() << " attack missed!" << endl;
+            }
+            if (!monsterAttackOrDefend) {
+                cout << player.getName() << " decides to defend!" << endl;
+                cout << player.getName() << " recovers 1 Health Point." << endl;
+                player.setHealthPoints(player.getHealthPoints() + 1);
                 system("pause");
                 system("cls");
             }
